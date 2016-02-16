@@ -1,0 +1,32 @@
+{
+    "name": "am2studio/laravel-table-sorter",
+    "type": "library",
+    "description": "Laravel table sorter",
+    "keywords": [
+        "AM2Studio",
+        "Laravel table sorter"
+    ],
+    "homepage": "https://github.com/AM2studio/Laravel-TableSorter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Filip Horvat",
+            "email": "filip.horvat@am2studio.hr",
+            "homepage": "http://am2studio.hr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.4.0",
+        "laravel/framework": "5.2.*",
+		"maatwebsite/excel": "2.*"
+    },
+    "require-dev": {
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "AM2Studio\\Laravel\\TableSorter\\": "src/AM2Studio/Laravel/TableSorter/"
+        }
+    }
+}
