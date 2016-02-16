@@ -17,7 +17,7 @@ trait Exporter
             $rows[] = $row;
         };
 
-        return \Maatwebsite\Excel::create($filename, function ($excel) use ($rows, $title, $creator, $company) {
+        return \Maatwebsite\Excel\Facades\Excel::create($filename, function ($excel) use ($rows, $title, $creator, $company) {
             $excel->setTitle($title);
             $excel->setCreator($creator)->setCompany($company);
             $excel->sheet($title, function ($sheet) use ($rows) {
