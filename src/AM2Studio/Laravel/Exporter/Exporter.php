@@ -5,7 +5,7 @@ namespace AM2Studio\Laravel\Exporter;
 trait Exporter
 {
     
-    public function exportOneSheet(\Illuminate\Database\Eloquent\Collection $collection, array $columns, $title, $filename, $format = 'xls', $creator = '', $company = '')
+    public function exportOneSheet(\Illuminate\Pagination\LengthAwarePaginator $collection, array $columns, $title, $filename, $format = 'xls', $creator = '', $company = '')
     {
         $rows   = [];
         $rows[] = array_values($columns);
