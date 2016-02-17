@@ -41,18 +41,18 @@ public function csv()
 }
 ```
 
+Function parameters
+
+```php
 First parameter in  \Illuminate\Pagination\LengthAwarePaginator
-
 Second parameter is array with attribute name in db and title in export
-
 Rest parameters are
-
     title for document
     filename for document
     format for document (xsl,pdf etc.)
     document creator
     document company
-    
+```
 
 ## Change log
 
