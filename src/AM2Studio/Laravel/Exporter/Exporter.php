@@ -9,13 +9,18 @@ trait Exporter
     {
         $rows   = [];
         $rows[] = array_values($columns);
-        foreach ($collection as $item) {
-            $row = [];
-            foreach ($columns as $attribute => $title) {
-                $row[] = $item->$attribute;
+        foreach ($columns as $attribute => $title) {
+                if (strpos($attribute, '.') !== false) {
+                    $relations = explode('.', $attribute);
+                    $object = $item;
+                    foreach($relations as $relation) {
+                        $object = $object->$relation;
+                    }
+                    $row[] = $object;
+                } else {
+                    $row[] = $item->$attribute;
+                }
             }
-            $rows[] = $row;
-        };
 
         return \Maatwebsite\Excel\Facades\Excel::create($filename, function ($excel) use ($rows, $title, $creator, $company) {
             $excel->setTitle($title);
