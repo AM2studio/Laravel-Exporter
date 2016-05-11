@@ -34,7 +34,7 @@ trait Exporter
             $excel->setTitle($title);
             $excel->setCreator($creator)->setCompany($company);
             $excel->sheet($title, function ($sheet) use ($rows) {
-                $sheet->fromArray($rows, null, 'A1', false, false);
+                $sheet->fromArray($rows, null, 'A1', true, false);
             });
         })->download($format);
     }
