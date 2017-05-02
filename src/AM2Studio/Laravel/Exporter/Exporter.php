@@ -5,7 +5,7 @@ namespace AM2Studio\Laravel\Exporter;
 
 trait Exporter
 {
-    public function exportOneSheet(\Illuminate\Pagination\LengthAwarePaginator $collection, array $columns, $title, $filename, $format = 'xls', $creator = '', $company = '')
+    public function exportOneSheet($collection, array $columns, $title, $filename, $format = 'xls', $creator = '', $company = '')
     {
         $rows = [];
         $rows[] = array_values($columns);
@@ -34,7 +34,7 @@ trait Exporter
             $excel->setTitle($title);
             $excel->setCreator($creator)->setCompany($company);
             $excel->sheet($title, function ($sheet) use ($rows) {
-                $sheet->fromArray($rows, null, 'A1', false, false);
+                $sheet->fromArray($rows, null, 'A1', true, false);
             });
         })->download($format);
     }
