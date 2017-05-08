@@ -12,20 +12,14 @@ trait Exporter
         foreach ($collection as $item) {
             $row = [];
             foreach ($columns as $attribute => $title) {
-                $pos = strpos($attribute, '.');
-                if ($pos !== false) {
-                    $right = $attribute;
-                    while ($pos !== false) {
-                        $left = substr($right, 0, $pos);
-                        $right = substr($right, ($pos + 1));
-
-                        $pos = strpos($right, '.');
-                        $relation = $item->$left;
-                    }
-                    $row[] = $relation->$right;
-                } else {
-                    $row[] = $item->$attribute;
+                $itemTmp = clone $item;
+                $relations = explode("." , $attribute);
+                
+                foreach($relations as $relation){
+                    $itemTmp = $itemTmp->$relation;
                 }
+                
+                $row[] = $itemTmp;
             }
             $rows[] = $row;
         };
