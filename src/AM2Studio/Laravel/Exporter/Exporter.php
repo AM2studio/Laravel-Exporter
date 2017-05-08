@@ -16,7 +16,17 @@ trait Exporter
                 $relations = explode("." , $attribute);
                 
                 foreach($relations as $relation){
-                    $itemTmp = $itemTmp->$relation;
+                    $relationData = explode('(' , rtrim($relation, ')'));
+                    
+                    if($itemTmp == null){
+                        $itemTmp = '';
+                    }elseif(isset($relationData[1])){
+                        $relation = $relationData[0];
+                        $param    = $relationData[1];
+                        $itemTmp  = $itemTmp->$relation($param);
+                    }else{
+                        $itemTmp = $itemTmp->$relation;
+                    }
                 }
                 
                 $row[] = $itemTmp;
