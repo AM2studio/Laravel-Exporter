@@ -17,9 +17,9 @@
         }
     ],
     "require": {
-        "php" : ">=5.4.0",
-        "laravel/framework": "5.*",
-		"maatwebsite/excel": "2.*"
+	"php" : ">=5.4.0",
+	"laravel/framework": "5.*",
+	"maatwebsite/excel": "2.*|3.*"
     },
     "require-dev": {
         
