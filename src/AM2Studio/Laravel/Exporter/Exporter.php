@@ -29,7 +29,7 @@ trait Exporter
                     }
                 }
                 
-                $row[] = $itemTmp;
+                $row[] = (string) $itemTmp;
             }
             $rows[] = $row;
         };
@@ -39,6 +39,9 @@ trait Exporter
             $excel->setCreator($creator)->setCompany($company);
             $excel->sheet($title, function ($sheet) use ($rows) {
                 $sheet->fromArray($rows, null, 'A1', true, false);
+                for ($i = 1; $i <= count($rows); $i++) {
+                    $sheet->getRowDimension($i)->setRowHeight(15);
+                }
             });
         })->download($format);
     }
